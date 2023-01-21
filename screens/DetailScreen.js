@@ -1,6 +1,9 @@
-import { View, Text, Image, Pressable, ScrollView } from 'react-native'
+import { View, Text, Image, Pressable, ScrollView, Linking } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Fontisto from "react-native-vector-icons/Fontisto"
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
 export default function DetailScreen({ route }) {
   const {
@@ -26,46 +29,73 @@ export default function DetailScreen({ route }) {
 
   }, [])
   console.log("detailden gelen", data)
-  const Genres = (props) => {
-    return (<View style={{ flex: 1, backgroundColor: "red" }} >
-      <Text style={{ flexDirection: "row", color: "white", paddingLeft: 20, backgroundColor: "orange" }}>{props.data.name}</Text>
-    </View>)
-  }
-  
+
 
   return (
     <View style={{ flex: 1 }} >
       <Image style={{ width: "100%", height: 250, borderBottomLeftRadius: 25, borderBottomRightRadius: 25 }} source={{ uri: data.background_image }} />
       <View style={{
-        backgroundColor: "red",
+        backgroundColor: "white",
+        elevation:4,
         position: "absolute",
         right: 0,
-        borderTopLeftRadius: 15,
-        borderBottomLeftRadius: 15,
-        width: "80%",
+        borderTopLeftRadius: 30,
+        borderBottomLeftRadius: 30,
+        width: "70%",
         height: 75,
         flexDirection: "row",
         justifyContent: "space-around",
+        alignItems:"center",
         top: 225
       }} >
-        <Text>rating</Text>
-        <Text>Star</Text>
-        <Text>Released</Text>
+
+        <View style={{alignItems:"center"}} >
+          <Fontisto name='star' color={"yellow"} size={16} />
+          <Text style={{paddingTop:10}} >{data.rating}/5</Text>
+        </View>
+
+      <View style={{alignItems:"center"}} >
+        <MaterialIcons  name='developer-mode' size={18} /> 
+        <Text style={{paddingTop:10}} >{data.creators_count}</Text>
       </View>
 
-      <View style={{ flex: 1, marginTop: 100, justifyContent: "space-around" }} >
-        <View style={{ flex: 1, backgroundColor: "grey" }} >
-          <Text style={{ fontSize: 22, fontWeight: "800", paddingHorizontal: 10 }} >{data.name}</Text>
-          <View style={{ flexDirection: "row", paddingHorizontal: 10 }} >
+      <View style={{alignItems:"center"}} >
+        <MaterialIcons name='update' color={"green"} size={18} />
+        <Text style={{paddingTop:10}} >{data.updated?.slice(0, 4)}</Text>
+
+      </View>
+      </View>
+
+      <View style={{ flex: 1,
+         marginTop: 80,
+          justifyContent: "space-around",
+          paddingHorizontal:10
+          }} >
+        <View style={{ maxHeight:150 }} >
+          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#12153D"}} >{data.name}</Text>
+          <View style={{ flexDirection: "row", paddingHorizontal: 10, marginVertical: 5 }} >
 
             <Text>{data.released?.slice(0, 4)}</Text>
-            <Text style={{ paddingHorizontal: 10 }} >website</Text>
+            <MaterialCommunityIcons onPress={() => Linking.openURL(`${data.website}`)} style={{ paddingHorizontal: 10 }} name='web' size={18} />
+
           </View>
-          {data.genres?.map((val, index) => <Genres key={index} data={val} />)}
+          <View style={{ flexDirection: "row" }} >
+
+            {data.genres?.map((val, index) =>
+              <Text style={{
+                borderWidth: 1,
+                borderRadius: 15,
+                borderColor: "grey",
+                paddingHorizontal: 5,
+                marginHorizontal: 10,
+                marginVertical: 5
+              }} key={index}
+              > {val.name} </Text>)}
+          </View>
 
         </View>
-        <View style={{ backgroundColor: "yellow", flex: 2 }} >
-
+        <View style={{ flex: 5, marginVertical: 5 }} >
+          <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18,color:"#12153D" }} >Plot Summary</Text>
           <ScrollView alwaysBounceVertical contentContainerStyle={{ padding: 10 }} >
             {full ?
               <Text style={{ fontSize: 15 }} >{data.description}</Text>
@@ -77,8 +107,16 @@ export default function DetailScreen({ route }) {
           </ScrollView>
         </View>
 
-        <View style={{ flex: 1, backgroundColor: "blue" }} >
-          <Text>Platform Logos</Text>
+        <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-evenly", alignItems: "center" }} >
+          {data.parent_platforms?.map((val, index) => (
+
+
+            <Fontisto key={index} name={val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug} size={19} />
+
+            //   <Fontisto name='playstation' size={19} />
+            //   <Fontisto name='xbox' size={19} />
+            // <Text key={index} >{val.platform?.name}</Text>
+          ))}
         </View>
 
       </View>
