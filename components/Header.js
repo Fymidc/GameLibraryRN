@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <View style={{flexDirection:"row",flex:1,padding:10,backgroundColor:"red",height:70,alignItems:"center"}} >
+    <View style={{flexDirection:"row",flex:1,padding:10,backgroundColor:"red",height:30,alignItems:"center"}} >
       <Text>İCON</Text>
       <Text style={{paddingHorizontal:20,fontSize:18}} >Hello Fatih Welcome</Text>
     </View>

@@ -1,38 +1,75 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import Game from '../components/Game'
 import axios from 'axios'
+import Header from '../components/Header'
 export default function HomeScreen({ navigation }) {
 
+  const [searchfocus, setsearchfocus] = useState(false)
   const [ndata, setdata] = useState([])
+  const [lmndata, setlmdata] = useState([])
   const [page, setpage] = useState(1)
+  const [lmpage, setlmpage] = useState(1)
   const [loading, setloading] = useState(false)
   // https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=2
   async function getData() {
     console.log("page", page)
     setloading(true)
     const response = await axios.get(`https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=${page}`)
- 
-    if(page === 1){
+
+    if (page === 1) {
       setloading(false)
       setdata(response.data.results)
-    }else{
+    } else {
       setloading(false)
-      setdata([...ndata,...response.data.results])
+      setdata([...ndata, ...response.data.results])
     }
-}
+  }
+  async function getLastMonthData() {
+    //console.log("page", page)
+    setloading(true)
+    const response = await axios.get(`https://api.rawg.io/api/games?dates=2023-01-01,2023-01-23&key=2a267710c3a84b7c8052c2ebbb7c7d08&&page=${page}`)
 
-useEffect(() => {
-  getData()
+    if (lmpage === 1) {
+      setloading(false)
+      setlmdata(response.data.results)
+    } else {
+      setloading(false)
+      setlmdata([...lmndata, ...response.data.results])
+    }
+  }
 
-}, [page])
-return (
-  <View style={{ flex: 1 }} >
-    <SearchBar />
-    <Game navigation={navigation} loading={loading} sload={setpage} load={page} data={ndata} />
-    <Game navigation={navigation} loading={loading} sload={setpage} load={page} data={ndata} />
+  useEffect(() => {
+    getData()
 
-  </View>
-)
+  }, [page])
+  useEffect(() => {
+    getLastMonthData()
+
+  }, [lmpage])
+  return (
+    <View style={{ flex: 1 }} >
+      <Header />
+      <View style={{ flex: 10 }}>
+
+        <ScrollView  >
+
+          <Game navigation={navigation}
+            loading={loading}
+            sload={setpage}
+            lmsload={setlmpage}
+            lmload={lmpage}
+            lmdata={lmndata}
+            load={page}
+            data={ndata} />
+        </ScrollView>
+      </View>
+
+
+
+      {/* <Game navigation={navigation} loading={loading} lmsload={setlmpage} lmload={lmpage} lmdata={lmndata} /> */}
+
+    </View>
+  )
 }

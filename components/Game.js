@@ -6,24 +6,30 @@ import GameCard from './GameCard'
 export default function Game(props) {
 
 
-  
+
 
   const loadpage = () => {
     console.log("laod page")
-   
+
     props.sload(props.load + 1)
-    
+
+  }
+  const loadlmpage = () => {
+    console.log("laod page")
+
+    props.lmsload(props.lmload + 1)
+
   }
 
   footerIndicator = () => {
     return props.loading ? (
       <View
         style={{
-          flex:1,
-          justifyContent:"center"
+          flex: 1,
+          justifyContent: "center"
         }}
       >
-        <ActivityIndicator style={{alignSelf:"center"}} animating  size="large"/>
+        <ActivityIndicator style={{ alignSelf: "center" }} animating size="large" />
       </View>
     ) : null
   };
@@ -32,52 +38,73 @@ export default function Game(props) {
   const renderItem = ({ item }) => (
     <GameCard navigation={props.navigation} data={item} screen={props.screen} />
   );
+
   return (
     <View style={{
       justifyContent: "center",
-      flex: 4,
+      flex: 1,
 
       padding: 5
     }} >
-      <View  >
+      <View >
+        <View style={{height:380}} >
 
-        {props.screen === "search"
-          ? <View />
-          : <Text style={{ paddingVertical: 25 }} >The props define the card </Text>
-        }
+          <Text style={{ paddingVertical: 25,color:"#12153D",fontSize:18 }} >Discover All Games </Text>
 
-        {props.data ? <FlatList
-          data={props.data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          horizontal={true}
-          nestedScrollEnabled
-          ListFooterComponent={footerIndicator}
-      
-          onEndReached={({ distanceFromEnd }) => {
-            console.log("distance from end", distanceFromEnd)
-            if (distanceFromEnd > 0) {
-              loadpage()
-              
-            };
+          {props.data ? <FlatList
+            data={props.data}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index}
+            horizontal={true}
+            nestedScrollEnabled
+            ListFooterComponent={footerIndicator}
+
+            onEndReached={({ distanceFromEnd }) => {
+              console.log("distance from end", distanceFromEnd)
+              if (distanceFromEnd > 0) {
+                loadpage()
+
+              };
+            }
+            }
+            onEndReachedThreshold={0.6}
+
+
+          /> : ""
           }
+        </View>
+
+        <View style={{height:380}} >
+
+          <Text style={{ paddingVertical: 25 ,color:"#12153D",fontSize:18}} >Last month Released </Text>
+
+          {props.lmdata ? <FlatList
+            data={props.lmdata}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index}
+            horizontal={true}
+            nestedScrollEnabled
+            ListFooterComponent={footerIndicator}
+
+            onEndReached={({ distanceFromEnd }) => {
+              console.log("distance from end", distanceFromEnd)
+              if (distanceFromEnd > 0) {
+                loadlmpage()
+
+              };
+            }
+            }
+            onEndReachedThreshold={0.6}
+
+
+          /> : ""
           }
-          onEndReachedThreshold={0.6}
+        </View>
 
 
-        /> : <ActivityIndicator  />
-        }
-
-        {/* { props.data.results == undefined ? <Text>Loading</Text> : props.data.results.map((val,index)=>
-          <GameCard navigation={props.navigation}  data={val} screen={props.screen} />
-      
-         )}
-           */}
 
 
       </View>
     </View>
   )
 }
-
-//images load slow make it faster and make the end reach a bit earlier 

@@ -5,6 +5,7 @@ import Fontisto from "react-native-vector-icons/Fontisto"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
+
 export default function DetailScreen({ route }) {
   const {
     id,
@@ -28,7 +29,7 @@ export default function DetailScreen({ route }) {
     getData()
 
   }, [])
-  console.log("detailden gelen", data)
+  //console.log("detailden gelen", data)
 
 
   return (
@@ -72,11 +73,11 @@ export default function DetailScreen({ route }) {
           paddingHorizontal:10
           }} >
         <View style={{ maxHeight:150 }} >
-          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#12153D"}} >{data.name}</Text>
+          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#12153D"}} >{data?.name}</Text>
           <View style={{ flexDirection: "row", paddingHorizontal: 10, marginVertical: 5 }} >
 
             <Text>{data.released?.slice(0, 4)}</Text>
-            <MaterialCommunityIcons onPress={() => Linking.openURL(`${data.website}`)} style={{ paddingHorizontal: 10 }} name='web' size={18} />
+            <MaterialCommunityIcons onPress={() => Linking.openURL(`${data?.website}`)} style={{ paddingHorizontal: 10 }} name='web' size={18} />
 
           </View>
           <View style={{ flexDirection: "row" }} >
@@ -111,7 +112,7 @@ export default function DetailScreen({ route }) {
           {data.parent_platforms?.map((val, index) => (
 
 
-            <Fontisto key={index} name={val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug} size={19} />
+            <Fontisto key={index} name={val.platform?.slug === "nintendo" ? "airplay" : val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug} size={19} />
 
             //   <Fontisto name='playstation' size={19} />
             //   <Fontisto name='xbox' size={19} />

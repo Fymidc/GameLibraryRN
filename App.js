@@ -29,7 +29,7 @@ import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DetailScreen from './screens/DetailScreen';
-
+import Navigation from "./navigation/navigation"
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 
@@ -39,12 +39,13 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }} >
-      <NavigationContainer>
+      <Navigation/>
+      {/* <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen  options={{headerShown:false}} name="Home" component={HomeScreen} />
           <Stack.Screen options={{headerShown:false,animation:"slide_from_right"}} name="Detail" component={DetailScreen} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
 
 
     </SafeAreaView>

@@ -14,12 +14,12 @@ export default function GameCard(props) {
         style={{
           right: 60 ,
          
-           height: 200,
-            width:160 ,
+           height: 260,
+            width:220 ,
             marginHorizontal:10}}
       >
-      <Image source={{uri:`${props.data?.background_image}`}} style={{width:160,height:200}}/>
-       <Text>{props.data?.name}</Text>
+      <Image source={{uri:`${props.data?.background_image}`}} style={{width:220,height:260}}/>
+       <Text style={{textAlign:"center",padding:5}} >{props.data?.name}</Text>
       </TouchableOpacity>
 
     </View>
