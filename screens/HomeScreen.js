@@ -12,6 +12,15 @@ export default function HomeScreen({ navigation }) {
   const [page, setpage] = useState(1)
   const [lmpage, setlmpage] = useState(1)
   const [loading, setloading] = useState(false)
+
+  const today = new Date()
+  const lastMonth = today - 30
+
+  console.log("today",today)
+  console.log("lastmonth",lastMonth)
+
+  //make the date as required
+
   // https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=2
   async function getData() {
     console.log("page", page)

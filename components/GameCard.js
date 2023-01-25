@@ -14,11 +14,11 @@ export default function GameCard(props) {
         style={{
           right: 60 ,
          
-           height: 260,
-            width:220 ,
+           height: props.route === "SearchS" ? 320 : 260,
+            width:props.route === "SearchS" ? 280 : 220 ,
             marginHorizontal:10}}
       >
-      <Image source={{uri:`${props.data?.background_image}`}} style={{width:220,height:260}}/>
+      <Image source={{uri:`${props.data?.background_image}`}} style={{width:props.route === "SearchS" ? 280 : 220,height:props.route === "SearchS" ? 320 :260}}/>
        <Text style={{textAlign:"center",padding:5}} >{props.data?.name}</Text>
       </TouchableOpacity>
 

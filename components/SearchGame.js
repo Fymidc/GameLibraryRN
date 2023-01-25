@@ -1,5 +1,6 @@
 import { View, Text, FlatList, ActivityIndicator } from 'react-native'
 import React from 'react'
+import GameCard from './GameCard'
 
 const SearchGame = (props) => {
     const loadlmpage = () => {
@@ -9,7 +10,7 @@ const SearchGame = (props) => {
     
       }
     const renderItem = ({ item }) => (
-        <GameCard navigation={props.navigation} data={item} screen={props.screen} />
+        <GameCard route={props.route} navigation={props.navigation} data={item} screen={props.screen} />
       );
 
       footerIndicator = () => {
@@ -27,11 +28,12 @@ const SearchGame = (props) => {
 
 
   return (
-    <View>
+    <View style={{height:380}} >
       {props.searchdata ? <FlatList
+      showsHorizontalScrollIndicator={false}
             data={props.searchdata}
             renderItem={renderItem}
-            keyExtractor={(item, index) => item.id}
+            keyExtractor={(item, index) => index}
             horizontal={true}
             nestedScrollEnabled
             ListFooterComponent={footerIndicator}

@@ -5,24 +5,36 @@ import IonIcons from 'react-native-vector-icons/Ionicons'
 
 export default function SearchBar(props) {
 
-  const searchfocus=()=>{
+  const searchfocus = () => {
     console.log("search focus")
     props.setsearchfocus(true)
   }
 
-  
+
 
   return (
     <View>
-      <View style={{marginHorizontal:20,marginTop:30,alignItems:"center",flexDirection:"row",justifyContent:"space-between"}} >
-        <TextInput style={{paddingHorizontal:15}} onFocus={()=>searchfocus()} placeholder='Search...'  />
-       {props.searchfocus === true ? <IonIcons style={{marginHorizontal:15}} name='close-outline' size={18}  />
-       
-      :
-      <IonIcons style={{marginHorizontal:15}} name='search-outline' size={18}  />
-      }
-        
-        
+      <View style={{
+        marginHorizontal: 20,
+        marginTop: 30,
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "space-between"
+      }} >
+        <TextInput style={{ paddingHorizontal: 15 ,fontSize:17 }}
+          value={props.searchtext}
+          onFocus={() => searchfocus()}
+          placeholder='Search...'
+          onChangeText={props.setsearchtext}
+
+        />
+        {props.searchfocus === true ? <IonIcons onPress={() => props.setsearchtext("")} style={{ marginHorizontal: 15 }} name='close-outline' size={19} />
+
+          :
+          <IonIcons style={{ marginHorizontal: 15 }} name='search-outline' size={19} />
+        }
+
+
       </View>
     </View>
   )
