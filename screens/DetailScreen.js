@@ -14,6 +14,7 @@ export default function DetailScreen({ route }) {
 
   const [data, setdata] = useState([])
 
+
   const [loading, setloading] = useState(false)
   const [full, setfull] = useState(false)
   // https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=2
@@ -29,11 +30,12 @@ export default function DetailScreen({ route }) {
     getData()
 
   }, [])
-  //console.log("detailden gelen", data)
+
+ const cleanDescription = data.description?.replace(/<\/?[^>]+(>|$)/g, "")
 
 
   return (
-    <View style={{ flex: 1 }} >
+    <View style={{ flex: 1 ,backgroundColor:"#0A1A2F"}} >
       <Image style={{ width: "100%", height: 250, borderBottomLeftRadius: 25, borderBottomRightRadius: 25 }} source={{ uri: data.background_image }} />
       <View style={{
         backgroundColor: "white",
@@ -73,11 +75,11 @@ export default function DetailScreen({ route }) {
           paddingHorizontal:10
           }} >
         <View style={{ maxHeight:150 }} >
-          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#12153D"}} >{data?.name}</Text>
+          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#ECEDED"}} >{data?.name}</Text>
           <View style={{ flexDirection: "row", paddingHorizontal: 10, marginVertical: 5 }} >
 
-            <Text>{data.released?.slice(0, 4)}</Text>
-            <MaterialCommunityIcons onPress={() => Linking.openURL(`${data?.website}`)} style={{ paddingHorizontal: 10 }} name='web' size={18} />
+            <Text style={{color:"#eceded"}} >{data.released?.slice(0, 4)}</Text>
+            <MaterialCommunityIcons onPress={() => Linking.openURL(`${data?.website}`)} style={{ paddingHorizontal: 10 }} color={"#eceded"} name='web' size={18} />
 
           </View>
           <View style={{ flexDirection: "row" }} >
@@ -86,22 +88,23 @@ export default function DetailScreen({ route }) {
               <Text style={{
                 borderWidth: 1,
                 borderRadius: 15,
-                borderColor: "grey",
+                borderColor: "#eceded",
                 paddingHorizontal: 5,
                 marginHorizontal: 10,
-                marginVertical: 5
+                marginVertical: 5,
+                color:"#eceded"
               }} key={index}
               > {val.name} </Text>)}
           </View>
 
         </View>
         <View style={{ flex: 5, marginVertical: 5 }} >
-          <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18,color:"#12153D" }} >Plot Summary</Text>
+          <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18,color:"#eceded" }} >Plot Summary</Text>
           <ScrollView alwaysBounceVertical contentContainerStyle={{ padding: 10 }} >
             {full ?
-              <Text style={{ fontSize: 15 }} >{data.description}</Text>
+              <Text style={{ fontSize: 15 ,color:"#eceded"}} >{cleanDescription}</Text>
               :
-              <Text style={{ fontSize: 15 }}>{data.description?.slice(0, 450)}</Text>
+              <Text style={{ fontSize: 15,color:"#eceded" }}>{cleanDescription?.slice(0, 450)}</Text>
             }
 
             <Pressable onPress={() => setfull(!full)} ><Text style={{ color: "blue" }} >{full ? "Less" : "More"}</Text></Pressable>
@@ -110,13 +113,10 @@ export default function DetailScreen({ route }) {
 
         <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-evenly", alignItems: "center" }} >
           {data.parent_platforms?.map((val, index) => (
-
-
-            <Fontisto key={index} name={val.platform?.slug === "nintendo" ? "airplay" : val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug} size={19} />
-
-            //   <Fontisto name='playstation' size={19} />
-            //   <Fontisto name='xbox' size={19} />
-            // <Text key={index} >{val.platform?.name}</Text>
+            <Fontisto
+             key={index} 
+             name={val.platform?.slug === "nintendo" ? "airplay" : val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug}
+              color={"#eceded"} size={19} />
           ))}
         </View>
 

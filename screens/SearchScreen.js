@@ -39,11 +39,11 @@ const SearchScreen = ({ navigation, route }) => {
     //console.log(searchdata)
 
     return (
-        <View style={{ flex: 1 }} >
+        <View style={{ flex: 1,backgroundColor:"#0A1A2F" }} >
             <SearchBar setsearchtext={setsearchtext} searchtext={searchtext} searchfocus={searchfocus} setsearchfocus={setsearchfocus} />
             <View style={{ flex: 1, justifyContent: "center" ,paddingHorizontal:5}} >
                 {searchtext.length === 0 ? <Text
-                    style={{textAlign:"center" , fontSize:18,color:"grey"}} >
+                    style={{textAlign:"center" , fontSize:18,fontWeight:"300", color:"grey"}} >
                     Search some fun
                 </Text>
 

@@ -56,7 +56,6 @@ function SearchStack({ navigation, route }) {
 function HomeStack({ navigation, route }) {
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-
     if (routeName === "Detail") {
       navigation.setOptions({ tabBarStyle: { display: 'none' } });
     } else {
@@ -92,7 +91,6 @@ function HomeStack({ navigation, route }) {
 const navigation = () => {
 
   const Placeholder = () => { return (<View />) }
-
   return (
     <NavigationContainer>
       
@@ -107,7 +105,7 @@ const navigation = () => {
 
 
         <Tab.Screen name="Settings" component={Placeholder} />
-        <Tab.Screen name="Carausel" component={SettingScreen} />
+        
 
       </Tab.Navigator>
     </NavigationContainer>

@@ -49,10 +49,11 @@ export default function Game(props) {
       <View >
         <View style={{height:380}} >
 
-          <Text style={{ paddingVertical: 25,color:"#12153D",fontSize:18 }} >Discover All Games </Text>
+          <Text style={{ paddingVertical: 25,color:"#ECEDED",fontSize:18 }} >Discover All Games </Text>
 
           {props.data ? <FlatList
           showsHorizontalScrollIndicator={false}
+         
             data={props.data}
             renderItem={renderItem}
             keyExtractor={(item, index) => index}
@@ -77,7 +78,7 @@ export default function Game(props) {
 
         <View style={{height:380}} >
 
-          <Text style={{ paddingVertical: 25 ,color:"#12153D",fontSize:18}} >Last month Released </Text>
+          <Text style={{ paddingVertical: 25 ,color:"#ECEDED",fontSize:18}} >Last Month Released </Text>
 
           {props.lmdata ? <FlatList
            showsHorizontalScrollIndicator={false}
