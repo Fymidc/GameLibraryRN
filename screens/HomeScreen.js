@@ -13,11 +13,14 @@ export default function HomeScreen({ navigation }) {
   const [lmpage, setlmpage] = useState(1)
   const [loading, setloading] = useState(false)
 
-  const today = new Date()
-  const lastMonth = today - 30
+  const today = new Date().toJSON().toString().slice(0,10)
+  const lastMonth = new Date();
+  lastMonth.setDate(1);
+  lastMonth.setMonth(lastMonth.getMonth(-1))
+ const oneMonthEarlier = lastMonth.toJSON().toString().slice(0,10)
 
-  console.log("today",today)
-  console.log("lastmonth",lastMonth)
+ // console.log("today",today)
+  //console.log("lastmonth",oneMonthEarlier)
 
   //make the date as required
 
@@ -38,7 +41,7 @@ export default function HomeScreen({ navigation }) {
   async function getLastMonthData() {
     //console.log("page", page)
     setloading(true)
-    const response = await axios.get(`https://api.rawg.io/api/games?dates=2023-01-01,2023-01-23&key=2a267710c3a84b7c8052c2ebbb7c7d08&&page=${page}`)
+    const response = await axios.get(`https://api.rawg.io/api/games?dates=${oneMonthEarlier},${today}&key=2a267710c3a84b7c8052c2ebbb7c7d08&&page=${page}`)
 
     if (lmpage === 1) {
       setloading(false)

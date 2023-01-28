@@ -7,21 +7,28 @@ import SettingScreen from '../screens/SettingScreen'
 import DetailScreen from '../screens/DetailScreen'
 import SearchScreen from '../screens/SearchScreen'
 import HomeScreen from '../screens/HomeScreen'
+import TabBar from '../components/TabBar'
 
 const Tab = createBottomTabNavigator()
 const HomeScreenStack = createNativeStackNavigator()
 const SearchScreenStack = createNativeStackNavigator()
 
 
+
 function SearchStack({ navigation, route }) {
+
+
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "Detail") {
-      navigation.setOptions({ tabBarStyle: {display: 'none'}});
+      navigation.setOptions({ tabBarStyle: { display: 'none' } });
     } else {
-      navigation.setOptions({ tabBarStyle: {display: 'flex'}});
+      navigation.setOptions({ tabBarStyle: { display: 'flex' } });
     }
   }, [navigation, route]);
+  
+  
+  
   return (
     <HomeScreenStack.Navigator>
       <HomeScreenStack.Screen
@@ -38,7 +45,7 @@ function SearchStack({ navigation, route }) {
         component={DetailScreen}
         options={() => {
           return {
-            animation:"slide_from_right",
+            animation: "slide_from_right",
             headerShown: false
           }
         }}
@@ -49,11 +56,11 @@ function SearchStack({ navigation, route }) {
 function HomeStack({ navigation, route }) {
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-   
+
     if (routeName === "Detail") {
-      navigation.setOptions({ tabBarStyle: {display: 'none'}});
+      navigation.setOptions({ tabBarStyle: { display: 'none' } });
     } else {
-      navigation.setOptions({ tabBarStyle: {display: 'flex'}});
+      navigation.setOptions({ tabBarStyle: { display: 'flex' } });
     }
   }, [navigation, route]);
   return (
@@ -72,7 +79,7 @@ function HomeStack({ navigation, route }) {
         component={DetailScreen}
         options={() => {
           return {
-            animation:"slide_from_right",
+            animation: "slide_from_right",
             headerShown: false
           }
         }}
@@ -83,16 +90,25 @@ function HomeStack({ navigation, route }) {
 
 
 const navigation = () => {
+
+  const Placeholder = () => { return (<View />) }
+
   return (
     <NavigationContainer>
+      
       <Tab.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Home"
+        tabBar={props => <TabBar {...props} />}
       // tabBar={props => <TabBar {...props} />}
       >
         <Tab.Screen name="Search" component={SearchStack} />
         <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Settings" component={SettingScreen} />
+
+
+        <Tab.Screen name="Settings" component={Placeholder} />
+        <Tab.Screen name="Carausel" component={SettingScreen} />
+
       </Tab.Navigator>
     </NavigationContainer>
   )

@@ -52,6 +52,7 @@ export default function Game(props) {
           <Text style={{ paddingVertical: 25,color:"#12153D",fontSize:18 }} >Discover All Games </Text>
 
           {props.data ? <FlatList
+          showsHorizontalScrollIndicator={false}
             data={props.data}
             renderItem={renderItem}
             keyExtractor={(item, index) => index}
@@ -79,6 +80,7 @@ export default function Game(props) {
           <Text style={{ paddingVertical: 25 ,color:"#12153D",fontSize:18}} >Last month Released </Text>
 
           {props.lmdata ? <FlatList
+           showsHorizontalScrollIndicator={false}
             data={props.lmdata}
             renderItem={renderItem}
             keyExtractor={(item, index) => index}

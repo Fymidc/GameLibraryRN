@@ -3,9 +3,9 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <View style={{flexDirection:"row",flex:1,padding:10,backgroundColor:"red",height:30,alignItems:"center"}} >
-      <Text>İCON</Text>
-      <Text style={{paddingHorizontal:20,fontSize:18}} >Hello Fatih Welcome</Text>
+    <View style={{flexDirection:"row",flex:1,padding:10,height:30,alignItems:"center"}} >
+     
+      <Text style={{paddingHorizontal:20,fontSize:20,fontWeight:"700"}} >V Game Library</Text>
     </View>
   )
 }

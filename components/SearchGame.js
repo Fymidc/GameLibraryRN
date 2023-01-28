@@ -1,8 +1,10 @@
-import { View, Text, FlatList, ActivityIndicator } from 'react-native'
+import { View, Text, FlatList, ActivityIndicator, Dimensions } from 'react-native'
 import React from 'react'
 import GameCard from './GameCard'
 
 const SearchGame = (props) => {
+  const width = Dimensions.get('window').width;
+
     const loadlmpage = () => {
         console.log("laod page")
     
