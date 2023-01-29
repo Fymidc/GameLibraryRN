@@ -6,34 +6,26 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
+  StyleSheet
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import HomeScreen from './screens/HomeScreen';
-import { NavigationContainer } from '@react-navigation/native';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailScreen from './screens/DetailScreen';
+
 import Navigation from "./navigation/navigation"
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
+import SplashScreen from 'react-native-splash-screen'
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide()
+  }, [])
+  
 
   const Stack = createNativeStackNavigator();
 

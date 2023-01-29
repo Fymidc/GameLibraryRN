@@ -1,6 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import ImagedCarouselCard from "react-native-imaged-carousel-card";
 
 export default function GameCard(props) {
 
@@ -13,7 +12,7 @@ export default function GameCard(props) {
         })}
         activeOpacity={0.8}
         style={{
-          right: 60,
+         
 
           height: props.route === "SearchS" ? 320 : 260,
           width: props.route === "SearchS" ? 280 : 220,
@@ -24,9 +23,11 @@ export default function GameCard(props) {
         <Image source={{ uri: `${props.data?.background_image}` }} style={{
           width: props.route === "SearchS" ? 280 : 220,
           height: props.route === "SearchS" ? 320 : 260,
-          borderRadius:15
+          borderTopLeftRadius:15,
+          borderTopRightRadius:15,
+          
         }} />
-        <Text style={{ textAlign: "center", padding: 5,color:"#ECEDED" }} >{props.data?.name}</Text>
+        <Text style={{ textAlign: "center", padding: 5,color:"black" ,backgroundColor:"#FFBF00",fontFamily:"BillyMoney-Regular",fontSize:18}} >{props.data?.name}</Text>
       </TouchableOpacity>
 
     </View>

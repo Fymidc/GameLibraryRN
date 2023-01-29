@@ -3,6 +3,16 @@ import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import SearchGame from '../components/SearchGame'
 import axios from 'axios'
+import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, AdEventType, BannerAdSize } from 'react-native-google-mobile-ads';
+
+
+AppOpenAd.createForAdRequest(TestIds.APP_OPEN);
+
+InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL);
+
+RewardedAd.createForAdRequest(TestIds.REWARDED);
+
+const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2976719493824952~7681507297';
 
 const SearchScreen = ({ navigation, route }) => {
     const [searchfocus, setsearchfocus] = useState(false)
@@ -34,17 +44,17 @@ const SearchScreen = ({ navigation, route }) => {
     useEffect(() => {
         getSearchData()
 
-    }, [searchtext,searchpage])
+    }, [searchtext, searchpage])
 
     //console.log(searchdata)
 
     return (
-        <View style={{ flex: 1,backgroundColor:"#0A1A2F" }} >
+        <View style={{ flex: 1, backgroundColor: "black" }} >
             <SearchBar setsearchtext={setsearchtext} searchtext={searchtext} searchfocus={searchfocus} setsearchfocus={setsearchfocus} />
-            <View style={{ flex: 1, justifyContent: "center" ,paddingHorizontal:5}} >
+            <View style={{ flex: 1, justifyContent: "center", paddingHorizontal: 5 }} >
                 {searchtext.length === 0 ? <Text
-                    style={{textAlign:"center" , fontSize:18,fontWeight:"300", color:"grey"}} >
-                    Search some fun
+                    style={{ textAlign: "center", fontSize: 18, fontWeight: "300", color: "rgba(255, 191, 0, 0.4)" }} >
+                    Search some fun..
                 </Text>
 
                     :
@@ -59,6 +69,13 @@ const SearchScreen = ({ navigation, route }) => {
                     />
                 }
             </View>
+            <BannerAd
+                unitId={adUnitId}
+                size={BannerAdSize.FULL_BANNER}
+                requestOptions={{
+                    requestNonPersonalizedAdsOnly: true,
+                }}
+            />
         </View>
     )
 }

@@ -22,20 +22,20 @@ export default function SearchBar(props) {
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor:"rgba(24, 29, 49, 0.6)"
+        backgroundColor:"#222222"
       }} >
-        <TextInput style={{ paddingHorizontal: 15 ,fontSize:17,color:"#ECEDED"}}
+        <TextInput style={{ paddingHorizontal: 15 ,fontSize:17,color:"#FFBF00"}}
           value={props.searchtext}
           onFocus={() => searchfocus()}
           placeholder='Search...'
-         placeholderTextColor={"grey"}
+         placeholderTextColor={"rgba(255, 191, 0, 0.4)"}
           onChangeText={props.setsearchtext}
 
         />
-        {props.searchfocus === true ? <IonIcons onPress={() => props.setsearchtext("")} color={"#ECEDED"} style={{ marginHorizontal: 15 }} name='close-outline' size={19} />
+        {props.searchfocus === true ? <IonIcons onPress={() => props.setsearchtext("")} color={"#FFBF00"} style={{ marginHorizontal: 15 }} name='close-outline' size={19} />
 
           :
-          <IonIcons style={{ marginHorizontal: 15 }}color={"#ECEDED"} name='search-outline' size={19} />
+          <IonIcons style={{ marginHorizontal: 15 }}color={"#FFBF00"} name='search-outline' size={19} />
         }
 
 

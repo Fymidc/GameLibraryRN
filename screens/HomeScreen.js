@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
 
   }, [lmpage])
   return (
-    <View style={{ flex: 1 , backgroundColor:"#0A1A2F"}} >
+    <View style={{ flex: 1 , backgroundColor:"black"}} >
       <Header />
       <View style={{ flex: 10 }}>
 

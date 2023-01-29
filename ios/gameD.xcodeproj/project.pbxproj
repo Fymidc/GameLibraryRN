@@ -14,6 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-gameD-gameDTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-gameD-gameDTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		0329D3DF6BEC47319F5838BB /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9845096C61EE4575B7D2C402 /* LuckiestGuy-Regular.ttf */; };
+		11D3F93792C64823AC50D9E2 /* BillyMoney-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B676CC93E7048FB95FEDF2E /* BillyMoney-Regular.ttf */; };
+		CF80DEAF339E49D3B1AD25DC /* Box Office - Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E75EF2CBD1EB406790266CFD /* Box Office - Demo.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = gameD/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-gameD-gameDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gameD-gameDTests.release.xcconfig"; path = "Target Support Files/Pods-gameD-gameDTests/Pods-gameD-gameDTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		9845096C61EE4575B7D2C402 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; name = "LuckiestGuy-Regular.ttf"; path = "../assets/fonts/LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3B676CC93E7048FB95FEDF2E /* BillyMoney-Regular.ttf */ = {isa = PBXFileReference; name = "BillyMoney-Regular.ttf"; path = "../assets/fonts/BillyMoney-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E75EF2CBD1EB406790266CFD /* Box Office - Demo.ttf */ = {isa = PBXFileReference; name = "Box Office - Demo.ttf"; path = "../assets/fonts/Box Office - Demo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				245FF169C7B34C289F9DD07D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +154,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		245FF169C7B34C289F9DD07D /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				9845096C61EE4575B7D2C402 /* LuckiestGuy-Regular.ttf */,
+				3B676CC93E7048FB95FEDF2E /* BillyMoney-Regular.ttf */,
+				E75EF2CBD1EB406790266CFD /* Box Office - Demo.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +262,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0329D3DF6BEC47319F5838BB /* LuckiestGuy-Regular.ttf in Resources */,
+				11D3F93792C64823AC50D9E2 /* BillyMoney-Regular.ttf in Resources */,
+				CF80DEAF339E49D3B1AD25DC /* Box Office - Demo.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

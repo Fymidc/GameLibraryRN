@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
-import React from 'react'
-import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { NavigationContainer, getFocusedRouteNameFromRoute, createNavigationContainerRef } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SettingScreen from '../screens/SettingScreen'
@@ -18,15 +18,6 @@ const SearchScreenStack = createNativeStackNavigator()
 function SearchStack({ navigation, route }) {
 
 
-  React.useLayoutEffect(() => {
-    const routeName = getFocusedRouteNameFromRoute(route);
-    if (routeName === "Detail") {
-      navigation.setOptions({ tabBarStyle: { display: 'none' } });
-    } else {
-      navigation.setOptions({ tabBarStyle: { display: 'flex' } });
-    }
-  }, [navigation, route]);
-  
   
   
   return (
@@ -45,6 +36,7 @@ function SearchStack({ navigation, route }) {
         component={DetailScreen}
         options={() => {
           return {
+          
             animation: "slide_from_right",
             headerShown: false
           }
@@ -54,14 +46,7 @@ function SearchStack({ navigation, route }) {
   )
 }
 function HomeStack({ navigation, route }) {
-  React.useLayoutEffect(() => {
-    const routeName = getFocusedRouteNameFromRoute(route);
-    if (routeName === "Detail") {
-      navigation.setOptions({ tabBarStyle: { display: 'none' } });
-    } else {
-      navigation.setOptions({ tabBarStyle: { display: 'flex' } });
-    }
-  }, [navigation, route]);
+
   return (
     <SearchScreenStack.Navigator>
       <SearchScreenStack.Screen
@@ -78,6 +63,7 @@ function HomeStack({ navigation, route }) {
         component={DetailScreen}
         options={() => {
           return {
+            
             animation: "slide_from_right",
             headerShown: false
           }
@@ -89,21 +75,33 @@ function HomeStack({ navigation, route }) {
 
 
 const navigation = () => {
-
+  const [routeName, setRouteName] = useState();
+//for make the tab bar hidden
+  const ref = createNavigationContainerRef();
   const Placeholder = () => { return (<View />) }
   return (
-    <NavigationContainer>
+    <NavigationContainer 
+    ref={ref}
+    onReady={() => {
+      setRouteName(ref.getCurrentRoute().name)
+    }}
+    onStateChange={async () => {
+      const previousRouteName = routeName;
+      const currentRouteName = ref.getCurrentRoute().name;
+      setRouteName(currentRouteName);
+    }}
+    >
       
       <Tab.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Home"
-        tabBar={props => <TabBar {...props} />}
+        tabBar={props => <TabBar {...props} routeName={routeName} /> }
       // tabBar={props => <TabBar {...props} />}
       >
         <Tab.Screen name="Search" component={SearchStack} />
-        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen  name="Home" component={HomeStack}  />
 
-
+       
         <Tab.Screen name="Settings" component={Placeholder} />
         
 

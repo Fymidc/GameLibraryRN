@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/BillyMoney-Regular.ttf",
+      "sha1": "7e9af38ab5310301f665973dbfa7bda4494bfc42"
+    },
+    {
+      "path": "assets/fonts/Box Office - Demo.ttf",
+      "sha1": "84acc1dbf122c72a634f7d8dd54646c8cae056db"
+    },
+    {
+      "path": "assets/fonts/LuckiestGuy-Regular.ttf",
+      "sha1": "7701304fb627ae9caa78cd982dce30d99a591296"
+    }
+  ]
+}

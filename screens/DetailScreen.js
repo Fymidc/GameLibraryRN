@@ -35,7 +35,7 @@ export default function DetailScreen({ route }) {
 
 
   return (
-    <View style={{ flex: 1 ,backgroundColor:"#0A1A2F"}} >
+    <View style={{ flex: 1 ,backgroundColor:"black"}} >
       <Image style={{ width: "100%", height: 250, borderBottomLeftRadius: 25, borderBottomRightRadius: 25 }} source={{ uri: data.background_image }} />
       <View style={{
         backgroundColor: "white",
@@ -75,7 +75,7 @@ export default function DetailScreen({ route }) {
           paddingHorizontal:10
           }} >
         <View style={{ maxHeight:150 }} >
-          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#ECEDED"}} >{data?.name}</Text>
+          <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10 ,color:"#FFBF00"}} >{data?.name}</Text>
           <View style={{ flexDirection: "row", paddingHorizontal: 10, marginVertical: 5 }} >
 
             <Text style={{color:"#eceded"}} >{data.released?.slice(0, 4)}</Text>
@@ -99,7 +99,7 @@ export default function DetailScreen({ route }) {
 
         </View>
         <View style={{ flex: 5, marginVertical: 5 }} >
-          <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18,color:"#eceded" }} >Plot Summary</Text>
+          <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18,color:"#FFBF00" }} >Plot Summary</Text>
           <ScrollView alwaysBounceVertical contentContainerStyle={{ padding: 10 }} >
             {full ?
               <Text style={{ fontSize: 15 ,color:"#eceded"}} >{cleanDescription}</Text>
@@ -107,7 +107,7 @@ export default function DetailScreen({ route }) {
               <Text style={{ fontSize: 15,color:"#eceded" }}>{cleanDescription?.slice(0, 450)}</Text>
             }
 
-            <Pressable onPress={() => setfull(!full)} ><Text style={{ color: "blue" }} >{full ? "Less" : "More"}</Text></Pressable>
+            <Pressable onPress={() => setfull(!full)} ><Text style={{ color: "grey" }} >{full ? "Less" : "... more"}</Text></Pressable>
           </ScrollView>
         </View>
 
@@ -116,7 +116,7 @@ export default function DetailScreen({ route }) {
             <Fontisto
              key={index} 
              name={val.platform?.slug === "nintendo" ? "airplay" : val.platform?.slug === "pc" ? "windows" : val.platform?.slug === "mac" ? "apple" : val.platform?.slug}
-              color={"#eceded"} size={19} />
+              color={"#FFBF00"} size={19} />
           ))}
         </View>
 

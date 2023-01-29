@@ -1,14 +1,17 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 
-function TabBar({ state, descriptors, navigation }) {
+function TabBar({ state, descriptors, navigation,routeName}) {
 
+ console.log(routeName)
   const refRBSheet = React.useRef();
+
+  if(routeName === "Detail") return null;
   return (
-    <View style={{ flexDirection: 'row', backgroundColor:"#0A1A2F" }}>
+    <View style={{ flexDirection: 'row', backgroundColor:"black" }}>
       <RBSheet
         height={150}
         ref={refRBSheet}
@@ -19,13 +22,13 @@ function TabBar({ state, descriptors, navigation }) {
             borderTopRightRadius: 25,
             borderTopLeftRadius: 25,
             elevation: 8,
-            backgroundColor:"#C5CED8"
+            backgroundColor:"black"
           },
           wrapper: {
             backgroundColor: "rgba(10, 26, 47, 0.6)"
           },
           draggableIcon: {
-            backgroundColor: "#0A1A2F"
+            backgroundColor: "#FFBF00"
           }
         }}
       >
@@ -34,11 +37,11 @@ function TabBar({ state, descriptors, navigation }) {
           paddingTop: 5
         }} >
 
-          <TouchableOpacity activeOpacity={0.8} style={{ flexDirection: "row", paddingHorizontal: 15, paddingVertical: 5, alignItems: "center" }} >
-            <Text style={{ fontSize: 16, color: "#0A1A2F", paddingHorizontal: 5 }} >Contact Me</Text>
+          <TouchableOpacity onPress={()=> Linking.openURL("mailto:fymidcapps@gmail.com")} activeOpacity={0.8} style={{ flexDirection: "row", paddingHorizontal: 15, paddingVertical: 5, alignItems: "center" }} >
+            <Text style={{ fontSize: 16, color: "#FFBF00", paddingHorizontal: 5 }} >Contact Me</Text>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.8} style={{ flexDirection: "row", paddingHorizontal: 15, paddingVertical: 5, alignItems: "center" }} >
-            <Text style={{ fontSize: 16, color: "#0A1A2F", paddingHorizontal: 5 }} >Privacy Policy</Text>
+          <TouchableOpacity onPress={()=>Linking.openURL("https://www.freeprivacypolicy.com/live/90367018-7d43-4b7b-b76e-fd97fe6cbae1")} activeOpacity={0.8} style={{ flexDirection: "row", paddingHorizontal: 15, paddingVertical: 5, alignItems: "center" }} >
+            <Text style={{ fontSize: 16, color: "#FFBF00", paddingHorizontal: 5 }} >Privacy Policy</Text>
           </TouchableOpacity>
 
         </View>
@@ -86,7 +89,7 @@ function TabBar({ state, descriptors, navigation }) {
           >
 
 
-            <IonIcons style={{ color: isFocused ? '#ECEDED' : '#3E3E40' }} size={45} name='home-outline' />
+            <IonIcons style={{ color: isFocused ? '#FFBF00' : '#3E3E40' }} size={45} name='home-outline' />
 
           </TouchableOpacity>
         ) : label === "Settings" ? (
@@ -103,7 +106,7 @@ function TabBar({ state, descriptors, navigation }) {
           >
 
 
-            {label === "Settings" && <IonIcons style={{ color: isFocused ? '#ECEDED' : '#3E3E40' }} size={25} name='settings-outline' />}
+            {label === "Settings" && <IonIcons style={{ color: isFocused ? '#FFBF00' : '#3E3E40' }} size={25} name='settings-outline' />}
 
           </TouchableOpacity>
         ) : (
@@ -118,7 +121,7 @@ function TabBar({ state, descriptors, navigation }) {
 
             style={{ flex: 1, alignItems: "center", height: 56, justifyContent: "center" }}
           >
-            {label === "Search" && <IonIcons style={{ color: isFocused ? '#ECEDED' : '#3E3E40' }} size={25} name='search-outline' />}
+            {label === "Search" && <IonIcons style={{ color: isFocused ? '#FFBF00' : '#3E3E40' }} size={25} name='search-outline' />}
 
           </TouchableOpacity>
         )

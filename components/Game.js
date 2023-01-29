@@ -49,7 +49,7 @@ export default function Game(props) {
       <View >
         <View style={{height:380}} >
 
-          <Text style={{ paddingVertical: 25,color:"#ECEDED",fontSize:18 }} >Discover All Games </Text>
+          <Text style={{marginHorizontal:20, paddingBottom:20, color:"#FFBF00",fontSize:20 ,fontFamily:"Box Office - Demo"}} >DISCOVER All Games </Text>
 
           {props.data ? <FlatList
           showsHorizontalScrollIndicator={false}
@@ -78,7 +78,7 @@ export default function Game(props) {
 
         <View style={{height:380}} >
 
-          <Text style={{ paddingVertical: 25 ,color:"#ECEDED",fontSize:18}} >Last Month Released </Text>
+          <Text style={{marginHorizontal:20, paddingBottom:20,color:"#FFBF00",fontSize:20,fontFamily:"Box Office - Demo"}} >LAST MONTH ReLeASeD </Text>
 
           {props.lmdata ? <FlatList
            showsHorizontalScrollIndicator={false}

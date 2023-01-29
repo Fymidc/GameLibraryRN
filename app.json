@@ -1,4 +1,7 @@
 {
   "name": "gameD",
-  "displayName": "gameD"
+  "displayName": "Game Lab",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-2976719493824952~7681507297"
+  }
 }
