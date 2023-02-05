@@ -20,10 +20,16 @@ import Navigation from "./navigation/navigation"
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 import SplashScreen from 'react-native-splash-screen'
+import mobileAds from 'react-native-google-mobile-ads';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide()
+    mobileAds()
+      .initialize()
+      .then(adapterStatuses =>{
+        
+      })
   }, [])
   
 

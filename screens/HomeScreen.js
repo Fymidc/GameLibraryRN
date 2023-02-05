@@ -1,12 +1,10 @@
 import { View, Text, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import SearchBar from '../components/SearchBar'
 import Game from '../components/Game'
 import axios from 'axios'
 import Header from '../components/Header'
 export default function HomeScreen({ navigation }) {
 
-  const [searchfocus, setsearchfocus] = useState(false)
   const [ndata, setdata] = useState([])
   const [lmndata, setlmdata] = useState([])
   const [page, setpage] = useState(1)
@@ -16,17 +14,12 @@ export default function HomeScreen({ navigation }) {
   const today = new Date().toJSON().toString().slice(0,10)
   const lastMonth = new Date();
   lastMonth.setDate(1);
-  lastMonth.setMonth(lastMonth.getMonth(-1))
+  lastMonth.setMonth(lastMonth.getMonth()-1)
  const oneMonthEarlier = lastMonth.toJSON().toString().slice(0,10)
 
- // console.log("today",today)
-  //console.log("lastmonth",oneMonthEarlier)
 
-  //make the date as required
-
-  // https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=2
   async function getData() {
-    console.log("page", page)
+    
     setloading(true)
     const response = await axios.get(`https://api.rawg.io/api/games?key=2a267710c3a84b7c8052c2ebbb7c7d08&page=${page}`)
 
@@ -51,6 +44,7 @@ export default function HomeScreen({ navigation }) {
       setlmdata([...lmndata, ...response.data.results])
     }
   }
+
 
   useEffect(() => {
     getData()

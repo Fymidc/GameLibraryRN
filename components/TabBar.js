@@ -6,7 +6,6 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 
 function TabBar({ state, descriptors, navigation,routeName}) {
 
- console.log(routeName)
   const refRBSheet = React.useRef();
 
   if(routeName === "Detail") return null;

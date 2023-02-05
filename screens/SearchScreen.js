@@ -12,7 +12,7 @@ InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL);
 
 RewardedAd.createForAdRequest(TestIds.REWARDED);
 
-const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2976719493824952~7681507297';
+const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2976719493824952/2393521592';
 
 const SearchScreen = ({ navigation, route }) => {
     const [searchfocus, setsearchfocus] = useState(false)
