@@ -49,7 +49,7 @@ export default function DetailScreen({ route }) {
             borderTopLeftRadius: 30,
             borderBottomLeftRadius: 30,
             width: "70%",
-            height: 75,
+            height: "10%",
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",

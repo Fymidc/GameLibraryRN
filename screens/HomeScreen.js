@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1 , backgroundColor:"black"}} >
       <Header />
-      <View style={{ flex: 10 }}>
+      <View style={{ flex: 11 }}>
 
         <ScrollView  >
 

@@ -47,7 +47,7 @@ export default function Game(props) {
       padding: 5
     }} >
       <View >
-        <View style={{height:380}} >
+        <View style={{height:"50%"}} >
 
           <Text style={{marginHorizontal:20, paddingBottom:20, color:"#FFBF00",fontSize:20 ,fontFamily:"Box Office - Demo"}} >DISCOVER All Games </Text>
 
@@ -76,7 +76,7 @@ export default function Game(props) {
           }
         </View>
 
-        <View style={{height:380}} >
+        <View style={{height:"50%"}} >
 
           <Text style={{marginHorizontal:20, paddingBottom:20,color:"#FFBF00",fontSize:20,fontFamily:"Box Office - Demo"}} >LAST MONTH ReLeASeD </Text>
 

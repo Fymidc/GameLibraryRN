@@ -30,7 +30,7 @@ const SearchGame = (props) => {
 
 
   return (
-    <View style={{height:380}} >
+    <View style={{height:"65%"}} >
       {props.searchdata ? <FlatList
       showsHorizontalScrollIndicator={false}
             data={props.searchdata}

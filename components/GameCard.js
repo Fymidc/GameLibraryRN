@@ -14,7 +14,7 @@ export default function GameCard(props) {
         style={{
          
 
-          height: props.route === "SearchS" ? 320 : 260,
+          height: props.route === "SearchS" ? 320 : 320,
           width: props.route === "SearchS" ? 280 : 220,
           marginHorizontal: 10
         }}
@@ -22,7 +22,7 @@ export default function GameCard(props) {
 
         <Image source={{ uri: `${props.data?.background_image}` }} style={{
           width: props.route === "SearchS" ? 280 : 220,
-          height: props.route === "SearchS" ? 320 : 260,
+          height: props.route === "SearchS" ? "75%" : "75%",
           borderTopLeftRadius:15,
           borderTopRightRadius:15,
           
