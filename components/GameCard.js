@@ -14,7 +14,7 @@ export default function GameCard(props) {
         style={{
          
 
-          height: props.route === "SearchS" ? 320 : 320,
+          height: props.route === "SearchS" ? "100%" : 320,
           width: props.route === "SearchS" ? 280 : 220,
           marginHorizontal: 10
         }}

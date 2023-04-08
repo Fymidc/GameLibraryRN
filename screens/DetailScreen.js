@@ -49,7 +49,7 @@ export default function DetailScreen({ route }) {
             borderTopLeftRadius: 30,
             borderBottomLeftRadius: 30,
             width: "70%",
-            height: "10%",
+            height: "9%",
             flexDirection: "row",
             justifyContent: "space-around",
             alignItems: "center",
@@ -80,7 +80,7 @@ export default function DetailScreen({ route }) {
             justifyContent: "space-around",
             paddingHorizontal: 10
           }} >
-            <View style={{ maxHeight: 150 }} >
+            <View style={{flex:2 }} >
               <Text style={{ fontSize: 32, fontWeight: "800", paddingHorizontal: 10, color: "#FFBF00" }} >{data?.name}</Text>
               <View style={{ flexDirection: "row", paddingHorizontal: 10, marginVertical: 5 ,alignItems:"center"}} >
 
@@ -104,7 +104,7 @@ export default function DetailScreen({ route }) {
               </View>
 
             </View>
-            <View style={{ flex: 5, marginVertical: 5 }} >
+            <View style={{ flex: 6, marginVertical: 5 }} >
               <Text style={{ paddingTop: 10, paddingHorizontal: 10, fontSize: 18, color: "#FFBF00" }} >Plot Summary</Text>
               <ScrollView alwaysBounceVertical contentContainerStyle={{ padding: 10 }} >
                 {full ?
